@@ -1,4 +1,4 @@
-# Kubernetes Summer Camp 2020 exam
+# Kubernetes Summer Camp 2020 
 
 
 ## Emojivoto
