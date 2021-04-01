@@ -1,0 +1,59 @@
+api:
+  host: ranjiraj-nair.emojivoto.kubernetes.camp
+      
+  emoji:
+    limits:
+      memory: 32Mi
+      cpu: 100m
+    requests:
+      memory: 20Mi
+      cpu: 100m
+    port: 8080
+    replicas: 1
+    maxunavilable: 0
+    maxsurge: 1
+    revisionLimit: 3
+    image:
+      name: buoyantio/emojivoto-emoji-svc
+      tag: v10
+
+  voting:
+    limits:
+      memory: 32Mi
+      cpu: 100m
+    requests:
+      memory: 20Mi
+      cpu: 100m
+    port: 8080
+    replicas: 1
+    maxunavilable: 0
+    maxsurge: 1
+    revisionLimit: 3
+    image:
+      name: buoyantio/emojivoto-voting-svc
+      tag: v10
+      
+  web:
+    hpa:
+      minReplicas: 1
+      maxReplicas: 10
+    image:
+      name: buoyantio/emojivoto-web
+      tag: v10
+      index_bundle: dist/index_bundle.js
+    port: 8080
+    maxunavilable: 0
+    maxsurge: 1
+    revisionLimit: 3
+    limits:
+      memory: 32Mi
+      cpu: 100m
+    requests:
+      memory: 20Mi
+      cpu: 100m
+
+
+
+
+
+

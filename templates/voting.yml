@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-voting-svc
+  labels:
+    app: {{ .Release.Name }}-voting-svc
+spec:
+  revisionHistoryLimit: {{ .Values.api.voting.revisionLimit }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: {{ .Values.api.voting.maxunavilable }}
+      maxSurge: {{ .Values.api.voting.maxsurge }}
+  replicas: {{ .Values.api.voting.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-voting-svc
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-voting-svc
+    spec:
+      containers:
+      - name: {{ .Release.Name }}-voting-svc
+        image: {{ .Values.api.voting.image.name }}:{{ .Values.api.voting.image.tag }}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: {{ .Values.api.voting.port }}
+          name: gprc
+        env:
+          - name: GRPC_PORT
+            value: {{ .Values.api.voting.port | quote }}
+        resources:
+          requests:
+            memory: {{ .Values.api.voting.requests.memory | quote }}
+            cpu:  {{ .Values.api.voting.requests.cpu | quote }}
+          limits:
+            memory:  {{ .Values.api.voting.limits.memory | quote }}
+            cpu: {{ .Values.api.voting.limits.cpu | quote }}
+        livenessProbe:
+          tcpSocket:
+            port: {{ .Values.api.voting.port }}
+          initialDelaySeconds: 15
+          periodSeconds: 20
+        readinessProbe:
+          tcpSocket:
+            port: {{ .Values.api.voting.port }}
+          initialDelaySeconds: 5
+          periodSeconds: 10
+
+       
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-voting-svc
+spec:
+  selector:
+    app: {{ .Release.Name }}-voting-svc
+  ports:
+  - name: grpc
+    port: 8082
+    targetPort: {{ .Values.api.voting.port }}

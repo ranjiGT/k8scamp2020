@@ -1,0 +1,15 @@
+apiVersion: v2
+name: api
+version: 0.0.1
+appVersion: 0.0.2
+description: Helm chart deployment for Kubernetes Summer Camp 2020 (K8scamp)(Evaluation)
+keywords:
+  - api
+  - service
+home: api.kubernetes.camp
+sources:
+  - https://github.com/0x7f/kubernetes.camp
+maintainers:
+  - name: Ranji Raj Nair
+    email: ranjiraj.nair@st.ovgu.de
+    url: https://github.com/RanjiGT
