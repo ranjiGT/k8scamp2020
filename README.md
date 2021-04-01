@@ -56,5 +56,5 @@ The task is considered successfully done when the following requirements are ful
 * On SysEleven, don't run `kubectl` with `--all-namespaces` as you have access to your namespace only.
 * The variables `EMOJISVC_HOST` and `VOTINGSVC_HOST` of the `emojivoto-web` service must contain the port.
 
-## Glipmse of the deployments
+## Glimpse of the deployments
 
