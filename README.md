@@ -8,7 +8,7 @@ The three services are the following:
 * [emojivoto-emoji-svc](https://github.com/BuoyantIO/emojivoto/tree/main/emojivoto-emoji-svc/): Internal API for finding and listing emoji. The web service is contacting this service internally and returning the results via its REST API.
 * [emojivoto-voting-svc](https://github.com/BuoyantIO/emojivoto/tree/main/emojivoto-voting-svc/): Internal API for voting and leaderboard. The web service is contacting this service internally and returning the results via its REST API..
 
-![Emojivoto Topology]()
+![Emojivoto Topology](https://github.com/ranjiGT/k8scamp2020/blob/master/emoji.png)
 
 ## Running
 
@@ -57,4 +57,5 @@ The task is considered successfully done when the following requirements are ful
 * The variables `EMOJISVC_HOST` and `VOTINGSVC_HOST` of the `emojivoto-web` service must contain the port.
 
 ## Glimpse of the deployments
-
+![](https://github.com/ranjiGT/k8scamp2020/blob/master/homepage.jpeg)
+![](https://github.com/ranjiGT/k8scamp2020/blob/master/leaderboard.jpeg)
